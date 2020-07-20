@@ -67,8 +67,6 @@ function pushSwap($la) {
             $lb = $ls['lb'];
         }
         echo implode(' ', $commands) . "\n";
-        echo implode(' ', $ls['la']) . "\n";
-        echo implode(' ', $ls['lb']) . "\n";
     }
 }
 
