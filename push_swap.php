@@ -39,20 +39,21 @@ function pushSwap($la) {
                         array_push($commands, 'sa', 'pb');
                     } else {
                         $ls = ['la' => $la, 'lb' => $lb];
-                        for ($j = 0; $j < ($i + 1) ; $j++) {
-                            $ls = pb($ls['la'], $ls['lb']);
-                            array_push($commands, 'pb');
+                        $op = 'ra';
+                        $ra = intval(substr(strval(array_key_first($ls['la']) - $i), 1));
+                        $rra = intval(array_key_last($ls['la'])) - $i;
+                        if ($rra < $ra) {
+                            $op = 'rra';
+                            $i = $rra + 1;
                         }
-                        $ls = rb($ls['la'], $ls['lb']);
-                        array_push($commands, 'rb');
                         for ($j = 0; $j < $i ; $j++) {
-                            $ls = pa($ls['la'], $ls['lb']);
-                            array_push($commands, 'pa');
+                            $ls = $op($ls['la'], $ls['lb']);
+                            array_push($commands, $op);
                         }
-                        $ls = rrb($ls['la'], $ls['lb']);
+                        $ls = pb($ls['la'], $ls['lb']);
                         $la = array_values($ls['la']);
                         $lb = array_values($ls['lb']);
-                        array_push($commands, 'rrb');
+                        array_push($commands, 'pb');
                     }
                 }
                 $count = count($la);
@@ -66,6 +67,8 @@ function pushSwap($la) {
             $lb = $ls['lb'];
         }
         echo implode(' ', $commands) . "\n";
+        echo implode(' ', $ls['la']) . "\n";
+        echo implode(' ', $ls['lb']) . "\n";
     }
 }
 
