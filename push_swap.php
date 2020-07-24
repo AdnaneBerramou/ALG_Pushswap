@@ -16,6 +16,10 @@ function pushSwap($la) {
             return intval($n);
         }, $la);
         while (!empty($la)) {
+            $sortedLa = $la;
+            sort($sortedLa, SORT_NUMERIC);
+            if ($sortedLa == $la)
+        break;
             $count = count($la);
             for ($i = array_key_first($la); $i < $count ; $i++) {
                 $min = min($la);
