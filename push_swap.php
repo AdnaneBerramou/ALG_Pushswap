@@ -15,9 +15,9 @@ function pushSwap($la) {
         }, $la);
         $ls = ['la' => $la, 'lb' => []];
         while (!empty($ls['la'])) {
-            $sortedLa = $la;
+            $sortedLa = $ls['la'];
             sort($sortedLa, SORT_NUMERIC);
-            if ($sortedLa == $la)
+            if ($sortedLa == $ls['la'])
         break;
             $min = min($ls['la']);
             $i = array_search($min, $ls['la']);
