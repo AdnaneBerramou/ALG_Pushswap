@@ -6,7 +6,7 @@ function sa($ls) {
         $ls['la'][0] = $ls['la'][1];
         $ls['la'][1] = $first;
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function sb($ls) {
@@ -15,7 +15,7 @@ function sb($ls) {
         $ls['lb'][0] = $ls['lb'][1];
         $ls['lb'][1] = $first;
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function sc($ls) {
@@ -28,7 +28,7 @@ function pa($ls) {
         unset($ls['lb'][array_key_first($ls['lb'])]);
         array_unshift($ls['la'], $value);
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function pb($ls) {
@@ -37,7 +37,7 @@ function pb($ls) {
         unset($ls['la'][array_key_first($ls['la'])]);
         array_unshift($ls['lb'], $value);
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function ra($ls) {
@@ -46,7 +46,7 @@ function ra($ls) {
         unset($ls['la'][array_key_first($ls['la'])]);
         array_push($ls['la'], $value);
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function rb($ls) {
@@ -55,7 +55,7 @@ function rb($ls) {
         unset($ls['lb'][array_key_first($ls['lb'])]);
         array_push($ls['lb'], $value);
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function rr($ls) {
@@ -68,7 +68,7 @@ function rra($ls) {
         unset($ls['la'][array_key_last($ls['la'])]);
         array_unshift($ls['la'], $value);
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function rrb($ls) {
@@ -77,7 +77,7 @@ function rrb($ls) {
         unset($ls['lb'][array_key_last($ls['lb'])]);
         array_unshift($ls['lb'], $value);
     }
-    return ['la' => $ls['la'], 'lb' => $ls['lb']];
+    return ['la' => array_values($ls['la']), 'lb' => array_values($ls['lb'])];
 }
 
 function rrr($ls) {
