@@ -10,6 +10,7 @@ function pushSwap($la) {
     sort($sortedLa, SORT_NUMERIC);
     $commands = [];
     if ($sortedLa == $la) {
+        echo "\n";
     } else {
         $la = array_map(function($n) {
             return intval($n);
