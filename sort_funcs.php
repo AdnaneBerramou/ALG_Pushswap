@@ -1,85 +1,85 @@
 <?php
 
-function sa($la, $lb) {
-    if (isset($la[0]) && isset($la[1])) {
-        $first = $la[0];
-        $la[0] = $la[1];
-        $la[1] = $first;
+function sa($ls) {
+    if (isset($ls['la'][0]) && isset($ls['la'][1])) {
+        $first = $ls['la'][0];
+        $ls['la'][0] = $ls['la'][1];
+        $ls['la'][1] = $first;
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function sb($la, $lb) {
-    if (isset($lb[0]) && isset($lb[1])) {
-        $first = $lb[0];
-        $lb[0] = $lb[1];
-        $lb[1] = $first;
+function sb($ls) {
+    if (isset($ls['lb'][0]) && isset($ls['lb'][1])) {
+        $first = $ls['lb'][0];
+        $ls['lb'][0] = $ls['lb'][1];
+        $ls['lb'][1] = $first;
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function sc($la, $lb) {
-    return ['la' => sa($la, $lb)['la'], 'lb' => sb($la, $lb)['lb']];
+function sc($ls) {
+    return ['la' => sa($ls)['la'], 'lb' => sb($ls)['lb']];
 }
 
-function pa($la, $lb) {
-    if (isset($lb[array_key_first($lb)])) {
-        $value = $lb[array_key_first($lb)];
-        unset($lb[array_key_first($lb)]);
-        array_unshift($la, $value);
+function pa($ls) {
+    if (isset($ls['lb'][array_key_first($ls['lb'])])) {
+        $value = $ls['lb'][array_key_first($ls['lb'])];
+        unset($ls['lb'][array_key_first($ls['lb'])]);
+        array_unshift($ls['la'], $value);
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function pb($la, $lb) {
-    if (isset($la[array_key_first($la)])) {
-        $value = $la[array_key_first($la)];
-        unset($la[array_key_first($la)]);
-        array_unshift($lb, $value);
+function pb($ls) {
+    if (isset($ls['la'][array_key_first($ls['la'])])) {
+        $value = $ls['la'][array_key_first($ls['la'])];
+        unset($ls['la'][array_key_first($ls['la'])]);
+        array_unshift($ls['lb'], $value);
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function ra($la, $lb) {
-    if (isset($la[array_key_first($la)])) {
-        $value = $la[array_key_first($la)];
-        unset($la[array_key_first($la)]);
-        array_push($la, $value);
+function ra($ls) {
+    if (isset($ls['la'][array_key_first($ls['la'])])) {
+        $value = $ls['la'][array_key_first($ls['la'])];
+        unset($ls['la'][array_key_first($ls['la'])]);
+        array_push($ls['la'], $value);
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function rb($la, $lb) {
-    if (isset($lb[array_key_first($lb)])) {
-        $value = $lb[array_key_first($lb)];
-        unset($lb[array_key_first($lb)]);
-        array_push($lb, $value);
+function rb($ls) {
+    if (isset($ls['lb'][array_key_first($ls['lb'])])) {
+        $value = $ls['lb'][array_key_first($ls['lb'])];
+        unset($ls['lb'][array_key_first($ls['lb'])]);
+        array_push($ls['lb'], $value);
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function rr($la, $lb) {
-    return ['la' => ra($la, $lb)['la'], 'lb' => rb($la, $lb)['lb']];
+function rr($ls) {
+    return ['la' => ra($ls)['la'], 'lb' => rb($ls)['lb']];
 }
 
-function rra($la, $lb) {
-    if (isset($la[array_key_last($la)])) {
-        $value = $la[array_key_last($la)];
-        unset($la[array_key_last($la)]);
-        array_unshift($la, $value);
+function rra($ls) {
+    if (isset($ls['la'][array_key_last($ls['la'])])) {
+        $value = $ls['la'][array_key_last($ls['la'])];
+        unset($ls['la'][array_key_last($ls['la'])]);
+        array_unshift($ls['la'], $value);
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function rrb($la, $lb) {
-    if (isset($lb[array_key_last($lb)])) {
-        $value = $lb[array_key_last($lb)];
-        unset($lb[array_key_last($lb)]);
-        array_unshift($lb, $value);
+function rrb($ls) {
+    if (isset($ls['lb'][array_key_last($ls['lb'])])) {
+        $value = $ls['lb'][array_key_last($ls['lb'])];
+        unset($ls['lb'][array_key_last($ls['lb'])]);
+        array_unshift($ls['lb'], $value);
     }
-    return ['la' => $la, 'lb' => $lb];
+    return ['la' => $ls['la'], 'lb' => $ls['lb']];
 }
 
-function rrr($la, $lb) {
-    return ['la' => rra($la, $lb)['la'], 'lb' => rrb($la, $lb)['lb']];
+function rrr($ls) {
+    return ['la' => rra($ls)['la'], 'lb' => rrb($ls)['lb']];
 }

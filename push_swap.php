@@ -21,20 +21,21 @@ function pushSwap($la) {
                 $min = min($la);
                 $current = $la[$i];
                 if ($min == $current) {
+                    $ls = ['la' => $la, 'lb' => $lb];
                     if ($i == 0) {
-                        $ls = pb($la, $lb);
+                        $ls = pb($ls);
                         $la = array_values($ls['la']);
                         $lb = array_values($ls['lb']);
                         array_push($commands, 'pb');
                     } elseif ($i == array_key_last($la)) {
-                        $ls = rra($la, $lb);
-                        $ls = pb($ls['la'], $ls['lb']);
+                        $ls = rra($ls);
+                        $ls = pb($ls);
                         $la = array_values($ls['la']);
                         $lb = array_values($ls['lb']);
                         array_push($commands, 'rra', 'pb');
                     } elseif ($i == 1) {
-                        $ls = sa($la, $lb);
-                        $ls = pb($ls['la'], $ls['lb']);
+                        $ls = sa($ls);
+                        $ls = pb($ls);
                         $la = array_values($ls['la']);
                         $lb = array_values($ls['lb']);
                         array_push($commands, 'sa', 'pb');
@@ -48,10 +49,10 @@ function pushSwap($la) {
                             $i = $rra + 1;
                         }
                         for ($j = 0; $j < $i ; $j++) {
-                            $ls = $op($ls['la'], $ls['lb']);
+                            $ls = $op($ls);
                             array_push($commands, $op);
                         }
-                        $ls = pb($ls['la'], $ls['lb']);
+                        $ls = pb($ls);
                         $la = array_values($ls['la']);
                         $lb = array_values($ls['lb']);
                         array_push($commands, 'pb');
@@ -62,7 +63,7 @@ function pushSwap($la) {
         }
         while(!empty($lb)) {
             $ls = ['la' => $la, 'lb' => $lb];
-            $ls = pa($ls['la'], $ls['lb']);
+            $ls = pa($ls);
             array_push($commands, 'pa');
             $la = $ls['la'];
             $lb = $ls['lb'];
