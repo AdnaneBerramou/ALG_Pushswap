@@ -1,6 +1,7 @@
 <?php
 
 require('./sort_funcs.php');
+require('./beta.php');
 
 function bestPb($list, $chunk) {
     $move = false;
@@ -185,6 +186,14 @@ function main($list){
         $nbCommands = INF;
         $commands = [];
         foreach ($chunks as $key => $chunk) {
+            if ($count < 25) {
+                $score = beta($list);
+                $if = $score;
+                if (count($score) < $nbCommands) {
+                    $nbCommands = count($score);
+                    $commands = $score;
+                }
+            }
             if ($count >= $chunk[0][0] && $count <= $chunk[0][1]) {
                 for ($i=$chunk[1][0]; $i <= $chunk[1][1] ; $i++) {
                     $score = pushSwap($list, $sorted, $i);
