@@ -79,10 +79,11 @@ function lessCommands($commands) {
             if ($currPrefix == $nextPrefix && $currSuffix != $nextSuffix) {
                 if ($currPrefix == 's') {
                     $commands[$key] = $currPrefix . 'c';
+                    $commands[$key + 1] = 'null';
                 } elseif ($currPrefix == 'r' || $currPrefix == 'rr') {
                     $commands[$key] = $currPrefix . 'r';
+                    $commands[$key + 1] = 'null';
                 }
-                $commands[$key + 1] = 'null';
             }
         }
     }
