@@ -284,6 +284,9 @@ function pushSwap($la, $sortedLa, $nbChunks) {
 namespace Contest;
 
 function sort($list){
+    if (!is_numeric($list[0])) {
+        unset($list[0]);
+    }
     $count = count($list);
     $chunks = [
         [[0, 100], [1, 13]],
@@ -348,6 +351,3 @@ function sort($list){
         echo implode(' ', $commands) . "\n";
     }
 }
-
-$uselessVal = array_shift($argv);
-sort($argv);
